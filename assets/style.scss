@@ -1,0 +1,399 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-size: 18px;
+}
+
+::-webkit-scrollbar {
+  width: 7px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #000000;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+
+a {
+  text-decoration: none;
+  word-wrap: normal;
+}
+
+:root {
+  --color-text: black;
+  --color-link: white;
+}
+
+.modal {
+  &-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    padding: 20px 10px;
+    overflow-y: auto;
+    z-index: 1000;
+  }
+
+  &-content {
+    padding: 10px;
+  }
+
+  &-main {
+    margin: auto;
+    background-color: #fff;
+    padding: 40px;
+    width: 100%;
+    max-width: 480px;
+    border-radius: 10px;
+    position: relative;
+  }
+
+  &-title {
+    font-size: 26px;
+    line-height: 34px;
+    font-weight: bold;
+    margin-bottom: 30px;
+  }
+
+  &-close {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    right: 5px;
+    top: 5px;
+    border-radius: 50%;
+    cursor: pointer;
+    border: none;
+    background: transparent
+      url('https://cdn.icon-icons.com/icons2/1769/PNG/512/4115230-cancel-close-cross-delete_114048.png')
+      50% no-repeat;
+    background-size: 20px 20px;
+
+    &:hover {
+      background-color: #f5f5f5;
+    }
+  }
+
+  &-footer {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px 20px;
+    margin-top: 30px;
+  }
+}
+
+.nav {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 100vw;
+  height: 65px;
+  padding: 0 20px;
+  color: white;
+  background: black;
+  a {
+    text-decoration: none;
+    color: white;
+  }
+}
+
+.layout {
+  width: 100vw;
+  padding: 20px;
+
+  &-nav {
+    min-width: 210px;
+    border-right: 1px solid black;
+    div {
+      cursor: pointer;
+      padding: 10px;
+      transition: all 0.2s ease-in-out;
+
+      .active {
+        background-color: black;
+        color: white;
+      }
+
+      &:hover {
+        background-color: black;
+        color: white;
+      }
+    }
+  }
+
+  &-container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+
+    h1,
+    h2,
+    h3 {
+      text-align: center;
+      margin-bottom: 20px;
+      width: fit-content;
+      align-self: center;
+    }
+
+    .expenses,
+    .income {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      align-self: center;
+      padding: 0 25px 0 15px;
+      border-left: 1px solid lightslategray;
+      border-radius: 15px;
+      overflow: auto;
+      max-height: 508.5px;
+      min-height: 140px;
+    }
+  }
+}
+
+.btn {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  height: 56px;
+  min-width: 226px;
+  padding: 0 20px;
+  border-radius: 10px;
+  background-color: #fff;
+  color: var(--color-text);
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 26px;
+  gap: 0 10px;
+  border: none;
+  text-decoration: none;
+  cursor: pointer;
+  white-space: nowrap;
+  user-select: none;
+  transition: 0.2s;
+  border: black solid 2px;
+
+  &-add {
+    position: absolute;
+    left: 15px;
+    padding-right: 25px;
+    margin-left: 20px;
+    cursor: pointer;
+    background: transparent
+      url('https://creazilla-store.fra1.digitaloceanspaces.com/icons/3206641/plus-circle-icon-md.png')
+      100% no-repeat;
+    background-size: 20px 20px;
+  }
+
+  &-sort {
+    position: absolute;
+    right: 15px;
+    margin-right: 20px;
+    cursor: pointer;
+  }
+
+  &:hover,
+  &.active {
+    background-color: var(--color-text);
+    color: #fff;
+  }
+
+  &:focus {
+    outline: 0;
+    box-shadow: none;
+  }
+
+  &--normal {
+    min-width: auto;
+  }
+
+  &--line {
+    border: 1px solid var(--color-link);
+    background-color: #fff;
+    color: var(--color-link);
+  }
+
+  &--round {
+    border-radius: 5px;
+  }
+
+  &--full {
+    width: 100%;
+  }
+
+  &--min {
+    height: 42px;
+    font-size: 13px;
+    padding: 0 15px;
+    min-width: 120px;
+  }
+
+  &[disabled] {
+    background-color: #ededed;
+    color: #c0c0c0;
+    cursor: not-allowed;
+  }
+}
+
+.all {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.skeleton {
+  color: transparent !important;
+  display: block;
+  user-select: none;
+  background: #d1d5db !important;
+  background-clip: content-box;
+  box-shadow: inset 0 0 0 10px white !important;
+  height: fit-content;
+  width: fit-content;
+  min-height: 28px;
+
+  * {
+    visibility: hidden;
+  }
+
+  &--wave {
+    position: relative;
+    overflow: hidden;
+    mask-image: -webkit-radial-gradient(white, black);
+    &::after {
+      animation: wave 1.5s linear 0s infinite;
+      background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.5),
+        transparent
+      );
+      content: '';
+      position: absolute;
+      transform: translate3d(-100%, 0, 0);
+      will-change: transform;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      top: 0;
+      height: fit-content;
+      width: fit-content;
+      min-height: 28px;
+    }
+  }
+}
+
+@keyframes wave {
+  0% {
+    transform: translate3d(-100%, 0, 0);
+  }
+  60% {
+    transform: translate3d(100%, 0, 0);
+  }
+  100% {
+    transform: translate3d(100%, 0, 0);
+  }
+}
+
+.skeleton-enter-active,
+.skeleton-leave-active-active {
+  transition: opacity 0.1s ease-in-out;
+}
+
+.skeleton-enter,
+.skeleton-leave-active {
+  opacity: 0;
+  transition: opacity 0.1s ease-in-out;
+}
+
+.operation {
+  cursor: pointer;
+
+  &:not(:last-child) {
+    margin-bottom: 10px;
+  }
+
+  &-date {
+    color: grey;
+    font-size: 10px;
+  }
+
+  &-main {
+    display: flex;
+    gap: 80px;
+    justify-content: space-between;
+    padding: 10px;
+    border-bottom: 0.8px solid lightslategray;
+    transition: all 0.2s ease-in-out;
+
+    &:hover {
+      scale: 1.008;
+    }
+
+    .about {
+      display: flex;
+      gap: 15px;
+
+      &-icon {
+        height: 65px;
+        width: 65px;
+      }
+    }
+  }
+}
+
+.new-operation {
+  &-type {
+    display: flex;
+    margin-bottom: 20px;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    flex-direction: column;
+
+    &__kind {
+      margin-bottom: 5px;
+    }
+  }
+
+  &-date,
+  &-place,
+  &-price {
+    display: flex;
+    margin-bottom: 10px;
+    flex-direction: column;
+  }
+
+  &-icons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 5px;
+  }
+
+  &__icon {
+    height: 80px;
+    width: 80px;
+    display: flex;
+    padding: 5px;
+    cursor: pointer;
+
+    &.active {
+      border-radius: 15px;
+      border: 1px solid black;
+    }
+  }
+}
+
+.sort-value {
+  margin-bottom: 20px;
+
+  &__title {
+    margin-bottom: 5px;
+  }
+}
