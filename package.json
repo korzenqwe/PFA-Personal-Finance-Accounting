@@ -20,7 +20,9 @@
     "sass-loader": "^10.1.1",
     "vue": "^2.7.10",
     "vue-server-renderer": "^2.7.10",
-    "vue-template-compiler": "^2.7.10"
+    "vue-template-compiler": "^2.7.10",
+    "bootstrap": "^4.6.2",
+    "bootstrap-vue": "^2.22.0"
   },
   "devDependencies": {
     "@babel/eslint-parser": "^7.19.1",
